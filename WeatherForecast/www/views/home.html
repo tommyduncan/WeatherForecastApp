@@ -5,15 +5,15 @@
         </button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="card" ng-repeat="data in weatherForecastData">
+        <div class="card">
             <div class="item item-divider">
-                {{data.locationName}}
+                {{weatherData.locationName}}
             </div>
             <div class="item item-text-wrap">
-                {{data.weatherElement[0].time[0].parameter.parameterName}}
+                {{weatherData.weatherElement[0].time[0].parameter.parameterName}}
             </div>
             <div class="item item-divider">
-                降雨機率：{{data.weatherElement[4].time[0].parameter.parameterName}}%
+                降雨機率：{{weatherData.weatherElement[4].time[0].parameter.parameterName}}%
             </div>
         </div>
     </ion-content>
