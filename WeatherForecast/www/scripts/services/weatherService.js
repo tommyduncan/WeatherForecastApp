@@ -1,5 +1,5 @@
 ﻿angular.module('WeatherForecast').service('WeatherService', function ($http) {
-    dataHost = 'http://104.199.219.156:3000/F-C0032-001.xml';
+    dataHost = 'http://ilab.csie.ntut.edu.tw:3000/F-C0032-001.xml';
 
     this.getWeatherForecastData = function (onSuccess) {
         $http.get(dataHost).
