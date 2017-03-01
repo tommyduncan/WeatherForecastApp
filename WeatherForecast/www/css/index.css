@@ -30,3 +30,9 @@ body {
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
     font-size:12px;
 }
+
+.symbol {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}

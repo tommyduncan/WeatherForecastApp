@@ -1,7 +1,6 @@
 ﻿<ion-view title="天氣預報">
     <ion-nav-buttons side="primary">
-        <button class="button" ng-click="">
-            {{nowLocation}}
+        <button class="button icon ion-refresh" ng-click="reload()">            
         </button>
     </ion-nav-buttons>
     <ion-content>
@@ -12,7 +11,10 @@
             <div class="item item-text-wrap">
                 <table>
                     <tr>
-                        <td rowspan="2" width="35%">{{weatherData.weatherElement[0].time[0].parameter.parameterName}}</td>
+                        <td colspan="3">{{weatherData.weatherElement[0].time[0].parameter.parameterName}}</td>
+                    </tr>
+                    <tr>                        
+                        <td rowspan="2" class="symbol"><img src="http://www.cwb.gov.tw/V7/symbol/weather/gif/day/{{weatherSymbol}}.gif" /></td>
                         <td>氣 溫：</td>
                         <td>{{weatherData.weatherElement[2].time[0].parameter.parameterName}} ~ {{weatherData.weatherElement[1].time[0].parameter.parameterName}} °C</td>
                     </tr>
@@ -20,7 +22,9 @@
                         <td>降雨機率：</td>
                         <td>{{weatherData.weatherElement[4].time[0].parameter.parameterName}} %</td>
                     </tr>
-                    <tr><td colspan="3"><br />現在感覺 {{weatherData.weatherElement[3].time[0].parameter.parameterName}}</td></tr>
+                    <tr>
+                        <td colspan="3">現在感覺 {{weatherData.weatherElement[3].time[0].parameter.parameterName}}</td>
+                    </tr>
                 </table>              
             </div>
         </div>
