@@ -10,10 +10,18 @@
                 {{weatherData.locationName}}
             </div>
             <div class="item item-text-wrap">
-                {{weatherData.weatherElement[0].time[0].parameter.parameterName}}
-            </div>
-            <div class="item item-divider">
-                降雨機率：{{weatherData.weatherElement[4].time[0].parameter.parameterName}}%
+                <table>
+                    <tr>
+                        <td rowspan="2" width="35%">{{weatherData.weatherElement[0].time[0].parameter.parameterName}}</td>
+                        <td>氣 溫：</td>
+                        <td>{{weatherData.weatherElement[2].time[0].parameter.parameterName}} ~ {{weatherData.weatherElement[1].time[0].parameter.parameterName}} °C</td>
+                    </tr>
+                    <tr>
+                        <td>降雨機率：</td>
+                        <td>{{weatherData.weatherElement[4].time[0].parameter.parameterName}} %</td>
+                    </tr>
+                    <tr><td colspan="3"><br />現在感覺 {{weatherData.weatherElement[3].time[0].parameter.parameterName}}</td></tr>
+                </table>              
             </div>
         </div>
     </ion-content>
