@@ -1,10 +1,19 @@
-﻿angular.module('WeatherForecast').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+﻿angular.module('WeatherForecast').config(['$stateProvider', '$ionicConfigProvider', function ($stateProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.navBar.alignTitle('center');
 
-    $stateProvider.state('index', {
-        cache: false,
+    $stateProvider.state('menu', {
+        url: '/menu', 
+        abstract: true,
+        templateUrl: 'views/menu.html',
+        controller: 'MenuController'
+    })
+    .state('menu.index', {
         url: '/',
-        templateUrl: 'views/home.html',
-        controller: 'HomeController'
+        views: {
+            'menuContent': {
+                templateUrl: 'views/home.html', 
+                controller: 'HomeController'
+            }
+        }
     })
 }]);
