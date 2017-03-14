@@ -3,7 +3,7 @@
     $scope.location = [];
 
     navigator.geolocation.getCurrentPosition(function (position) {
-        GeocodingService.getCityName(position.coords.latitude, position.coords.longitude, function (data) {            
+        GeocodingService.getCityName(position.coords.latitude, position.coords.longitude, function (data) {
             if (data.results[0].address_components[4].long_name === '台北市') {
                 $scope.nowLocation = '臺北市';
                 $scope.location.push('臺北市');
@@ -20,5 +20,9 @@
                 }
             });
         });
-    });
+    }, function (error) {
+        console.log(error);
+        console.log('code: ' + error.code);
+        console.log('message: ' + error.message);
+    }, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 }]);

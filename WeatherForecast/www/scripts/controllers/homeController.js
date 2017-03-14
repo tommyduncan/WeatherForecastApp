@@ -1,4 +1,4 @@
-﻿angular.module('WeatherForecast').controller('HomeController', ['$scope', '$ionicLoading', '$ionicSideMenuDelegate', '$state', 'WeatherService', 'GeocodingService', function ($scope, $ionicLoading, $ionicSideMenuDelegate, $state, WeatherService, GeocodingService) {
+﻿angular.module('WeatherForecast').controller('HomeController', ['$scope', '$ionicLoading', '$ionicSideMenuDelegate', '$ionicPopup', '$state', 'WeatherService', 'GeocodingService', function ($scope, $ionicLoading, $ionicSideMenuDelegate, $ionicPopup, $state, WeatherService, GeocodingService) {
     var date = new Date();
     var today = date.getMonth() + 1 + '月' + date.getDate() + '日', tomorrow;
     var nowHour = date.getHours();
@@ -59,8 +59,13 @@
         });
     }
     , function (error) {
-        console.log(error);
-        console.log('code: ' + error.code)
-        console.log('message: ' + error.message);
-    });
+        $ionicPopup.alert({
+            title: 'GPS定位錯誤！',
+            template: 'error code: ' + error.code + '<br >' + 'error message: ' + error.message,
+            buttons: [{
+                text: '關閉',
+                type: 'button-calm',
+            }]
+        });
+    }, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 }]);
