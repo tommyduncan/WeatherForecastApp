@@ -1,14 +1,9 @@
-﻿angular.module('WeatherForecast').controller('HomeController', ['$scope', '$ionicLoading', '$ionicSideMenuDelegate', '$ionicPopup', '$state', 'WeatherService', 'GeocodingService', function ($scope, $ionicLoading, $ionicSideMenuDelegate, $ionicPopup, $state, WeatherService, GeocodingService) {
+﻿angular.module('WeatherForecast').controller('HomeController', ['$scope', '$ionicSideMenuDelegate', '$ionicPopup', '$state', 'WeatherService', 'GeocodingService', function ($scope, $ionicSideMenuDelegate, $ionicPopup, $state, WeatherService, GeocodingService) {
     var date = new Date();
     var today = date.getMonth() + 1 + '月' + date.getDate() + '日', tomorrow;
     var nowHour = date.getHours();
-    $scope.weatherSymbol = [];
-
-    /* 讀取動畫 */
-    $ionicLoading.show({
-        template: "<ion-spinner icon='ios'></ion-spinner>",
-        duration: 1500
-    });
+    var symbolURL = 'http://www.cwb.gov.tw/V7/symbol/weather/gif/day/';
+    $scope.weatherSymbol = [];    
 
     /* 打開目錄欄 */
     $scope.openMenu = function () {
@@ -47,11 +42,11 @@
                         $scope.weatherData = data.cwbopendata.dataset.location[key];
 
                         /* 定義各種天氣的 icon 編號 (編號小於10的，前面要加0) */
-                        for (var i = 0; i < 3; i++){
-                            if (data.cwbopendata.dataset.location[key].weatherElement[0].time[0].parameter.parameterValue < 10)
-                                $scope.weatherSymbol.push('0' + data.cwbopendata.dataset.location[key].weatherElement[0].time[0].parameter.parameterValue);
+                        for (var i = 0; i < 3; i++) {
+                            if (data.cwbopendata.dataset.location[key].weatherElement[0].time[i].parameter.parameterValue < 10)
+                                $scope.weatherSymbol.push(symbolURL + '0' + data.cwbopendata.dataset.location[key].weatherElement[0].time[i].parameter.parameterValue + '.gif');
                             else
-                                $scope.weatherSymbol.push(data.cwbopendata.dataset.location[key].weatherElement[0].time[0].parameter.parameterValue);
+                                $scope.weatherSymbol.push(symbolURL + data.cwbopendata.dataset.location[key].weatherElement[0].time[i].parameter.parameterValue + '.gif');
                         }
                     }
                 }

@@ -14,11 +14,11 @@
         </header>
         <ion-content class="has-header">
             <ion-list ng-repeat="locationName in location">
-                <ion-item menu-close ng-if="locationName == nowLocation" href="#/menu/">
-                    <i class="icon ion-navigate"></i>{{locationName}}
+                <ion-item menu-close ng-if="locationName.cityName == nowLocation" href="#/menu/">
+                    <i class="icon ion-ios-location"></i> {{locationName.cityName}}
                 </ion-item>   
-                <ion-item menu-close ng-if="locationName != nowLocation">
-                    {{locationName}}
+                <ion-item menu-close ng-if="locationName.cityName != nowLocation" href="#/menu/weather/{{locationName.cityId}}">
+                    {{locationName.cityName}}
                 </ion-item>   
             </ion-list>
         </ion-content>

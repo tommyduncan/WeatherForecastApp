@@ -1,8 +1,7 @@
 ﻿<ion-view title="天氣預報">
     <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()">
-        </button>
-    </ion-nav-buttons>  
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
     <ion-content>
         <div class="card">
             <div class="item item-divider">
@@ -13,7 +12,7 @@
                     <tr>
                         <td colspan="3">{{weatherData.weatherElement[0].time[0].parameter.parameterName}}</td>
                     </tr>
-                    <tr>                        
+                    <tr>
                         <td rowspan="2" class="symbol"><img src={{weatherSymbol[0]}} /></td>
                         <td>氣 溫：</td>
                         <td>{{weatherData.weatherElement[2].time[0].parameter.parameterName}} ~ {{weatherData.weatherElement[1].time[0].parameter.parameterName}} °C</td>
@@ -25,11 +24,11 @@
                     <tr>
                         <td colspan="3">現在感覺 {{weatherData.weatherElement[3].time[0].parameter.parameterName}}</td>
                     </tr>
-                </table>              
+                </table>
             </div>
         </div>
 
-         <div class="card">
+        <div class="card">
             <div class="item item-divider">
                 天氣預報
             </div>
@@ -54,8 +53,8 @@
                     <tr>
                         <td>降雨機率： {{weatherData.weatherElement[4].time[1].parameter.parameterName}} %</td>
                         <td>降雨機率： {{weatherData.weatherElement[4].time[2].parameter.parameterName}} %</td>
-                    </tr>                    
-                </table>                       
+                    </tr>
+                </table>
             </div>
         </div>
     </ion-content>
